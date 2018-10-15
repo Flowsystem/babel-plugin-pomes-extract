@@ -2,8 +2,8 @@
   "name": "babel-plugin-pomes-extract",
   "version": "0.0.1",
   "description": "Babel plugin to extract strings from React components in which Pomes Translation API has been used and gettext-like functions into a gettext POT file",
-  "author": "Mehran Hatami <mehran.hatami@oneflow.com>",
-  "homepage": "https://github.com/Flowsystem/pomes/tree/master/packages/babel-plugin-pomes#readme",
+  "author": "Oneflow <assets@oneflow.com> (https://www.oneflow.com)",
+  "homepage": "https://github.com/Flowsystem/babel-plugin-pomes-extract/tree/master#readme",
   "main": "index.js",
   "directories": {
     "lib": "src",
