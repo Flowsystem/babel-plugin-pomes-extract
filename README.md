@@ -1,11 +1,29 @@
-# `babel-plugin-pomes`
+# `babel-plugin-pomes-extract v0.0.3`
 
-> TODO: description
+Babel plugin to extract strings from React components in which Pomes Translation API has been used and gettext-like functions into a gettext POT file.
 
 ## Usage
 
 ```
-const babelPluginPomes = require('babel-plugin-pomes');
+yarn add @oneflowab/babel-plugin-pomes-extract
+```
 
-// TODO: DEMONSTRATE API
+Then you could configure the babel plugin like below:
+
+```javascript
+module.exports = {
+  presets: [
+    //...
+  ],
+  plugins: [
+    //...
+    ['@oneflowab/babel-plugin-pomes-extract', {
+      outputDir: 'translations',
+      headers: {
+        'po-revision-date': new Date().toISOString(),
+      },
+    }],
+  ],
+};
+
 ```
