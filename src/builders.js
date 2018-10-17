@@ -14,6 +14,7 @@ const {
 const {
   validateComponentEntry,
   validateMessageFunctionCall,
+  validateMessageComment,
 } = require('./validators');
 
 const {
@@ -51,7 +52,7 @@ function buildMessageEntry(args, types, path, options) {
   }
 
   if (messageComment) {
-    entry[constants.MSG_COMMENT] = extractFuncArg(messageComment.value, options.comment, options.name, types, path);
+    entry.extracted = extractFuncArg(messageComment.value, options.comment, options.name, types, path);
   }
 
   return entry;
@@ -141,6 +142,7 @@ module.exports = {
         }
         entry = buildMessageEntry(args, types, path, options);
         if (entry) {
+          validateMessageComment(path, opts, entry);
           return buildReference(entry, state, path.node.loc.start.line);
         }
       }
@@ -173,13 +175,13 @@ module.exports = {
 
         switch (attributeName) {
           case getSingularAttribute(state):
-            entry.msgid = attributeValue;
+            entry[constants.MSG_ID] = attributeValue;
             break;
           case getPluralAttribute(state):
-            entry.msgid_plural = attributeValue;
+            entry[constants.MSG_PLURAL_ID] = attributeValue;
             break;
           case getContextAttribute(state):
-            entry.msgctxt = attributeValue;
+            entry[constants.MSG_CONTEXT] = attributeValue;
             break;
           case getCommentAttribute(state):
             entry.extracted = attributeValue;
@@ -207,7 +209,7 @@ module.exports = {
         [constants.MSG_ID]: messageId,
         [constants.MSG_PLURAL_ID]: messagePluralId,
         [constants.MSG_CONTEXT]: messageContext,
-        [constants.MSG_COMMENT]: messageComment,
+        extracted: messageComment,
         reference,
       } = entry;
       const context = entry.msgctxt || '';
@@ -225,7 +227,7 @@ module.exports = {
       const existingReference = data.translations[context][messageId].comments
         && data.translations[context][messageId].comments.reference;
 
-      const existingPlural = data.translations[context][messageId].msgid_plural;
+      const existingPlural = data.translations[context][messageId][constants.MSG_PLURAL_ID];
       const existingExtracted = data.translations[context][messageId].comments
         && data.translations[context][messageId].comments.extracted;
 
