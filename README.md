@@ -1,4 +1,4 @@
-# `babel-plugin-pomes-extract v0.0.5`
+# `babel-plugin-pomes-extract v0.0.6`
 
 Babel plugin to extract strings from React components in which Pomes Translation API has been used and gettext-like functions into a gettext POT file.
 

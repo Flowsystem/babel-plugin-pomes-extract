@@ -14,7 +14,7 @@ module.exports = ({ types }) => ({
       }
     },
     JSXElement(path, state) {
-      const entry = buildJSXElementEntry(types, path, state);
+      const entry = buildJSXElementEntry(types, path, state, this.file.opts);
       if (entry) {
         this.entries.push(entry);
       }

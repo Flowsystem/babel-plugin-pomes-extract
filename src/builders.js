@@ -157,7 +157,7 @@ module.exports = {
     return null;
   },
 
-  buildJSXElementEntry(types, path, state) {
+  buildJSXElementEntry(types, path, state, opts) {
     const element = path.node.openingElement;
 
     if (element.name.name === getComponentName(state)) {
@@ -191,6 +191,7 @@ module.exports = {
         }
       });
 
+      validateMessageComment(path, opts, entry);
       validateComponentEntry(entry, types, path, state);
       return buildReference(entry, state, path.node.loc.start.line);
     }
