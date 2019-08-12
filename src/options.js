@@ -20,11 +20,11 @@ const DEFAULTS = {
 };
 
 function getFunctionOptions(state) {
-  return Object.assign({}, DEFAULTS, state.opts).function;
+  return ({ ...DEFAULTS, ...state.opts }).function;
 }
 
 function getComponentOptions(state) {
-  return Object.assign({}, DEFAULTS.component, (state.opts || {}).component);
+  return { ...DEFAULTS.component, ...(state.opts || {}).component };
 }
 
 module.exports = {
@@ -33,15 +33,15 @@ module.exports = {
     return options.name === funcName && options;
   },
 
-  getComponentName: state => getComponentOptions(state).name,
+  getComponentName: (state) => getComponentOptions(state).name,
 
-  getSingularAttribute: state => getComponentOptions(state).singular,
+  getSingularAttribute: (state) => getComponentOptions(state).singular,
 
-  getPluralAttribute: state => getComponentOptions(state).plural,
+  getPluralAttribute: (state) => getComponentOptions(state).plural,
 
-  getContextAttribute: state => getComponentOptions(state).context,
+  getContextAttribute: (state) => getComponentOptions(state).context,
 
-  getCommentAttribute: state => getComponentOptions(state).comment,
+  getCommentAttribute: (state) => getComponentOptions(state).comment,
 
-  getFutureAttribute: state => getComponentOptions(state).future,
+  getFutureAttribute: (state) => getComponentOptions(state).future,
 };

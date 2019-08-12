@@ -42,7 +42,7 @@ function saveEntries(state, entries, file) {
     return;
   }
 
-  const thisPlugin = state.opts.plugins.find(plugin => plugin.key.includes(PLUGIN_KEY));
+  const thisPlugin = state.opts.plugins.find((plugin) => plugin.key.includes(PLUGIN_KEY));
   const args = (thisPlugin || {}).options;
 
   const filename = file.opts.filename || 'unknown';
