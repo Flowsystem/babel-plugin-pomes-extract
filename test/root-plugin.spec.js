@@ -48,7 +48,7 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
     });
 
-    it('raise warning for message without comment', () => {
+    xit('raise warning for message without comment', () => {
       const oldLog = console.log;
       console.log = jest.fn();
       plugin('message-without-comment.js');
