@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const babel = require('@babel/core');
 
-const plugin = (filename) => babel.transformFileSync(filename, {
+const plugin = (filename) => babel.transformFileSync(path.join(__dirname, 'fixtures', filename), {
   plugins: [
     [
       path.join(__dirname, '../index.js'),
@@ -17,27 +17,29 @@ const plugin = (filename) => babel.transformFileSync(filename, {
   ],
 });
 
+const readPotFile = (filename) => fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures', filename), { encoding: 'utf8' });
+
 describe('Pomes Extract Plugin', () => {
   it('extract a message call', () => {
-    plugin(path.join(__dirname, 'fixtures/message.js'));
+    plugin('message.js');
 
-    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message.js.pot'), { encoding: 'utf8' });
+    const potFileContent = readPotFile('message.js.pot');
 
     expect(potFileContent.toString()).toMatchSnapshot();
   });
 
   it('extract a message call with plural form', () => {
-    plugin(path.join(__dirname, 'fixtures/message-with-plural.js'));
+    plugin('message-with-plural.js');
 
-    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message-with-plural.js.pot'), { encoding: 'utf8' });
+    const potFileContent = readPotFile('message-with-plural.js.pot');
 
     expect(potFileContent.toString()).toMatchSnapshot();
   });
 
   it('merge a message with singular and plural forms', () => {
-    plugin(path.join(__dirname, 'fixtures/message-with-singular-and-plural.js'));
+    plugin('message-with-singular-and-plural.js');
 
-    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message-with-singular-and-plural.js.pot'), { encoding: 'utf8' });
+    const potFileContent = readPotFile('message-with-singular-and-plural.js.pot');
 
     expect(potFileContent.toString()).toMatchSnapshot();
   });
