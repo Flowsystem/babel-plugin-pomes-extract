@@ -19,9 +19,25 @@ const plugin = (filename) => babel.transformFileSync(filename, {
 
 describe('Pomes Extract Plugin', () => {
   it('extract a message call', () => {
-    plugin(path.join(__dirname, 'fixtures/file-with-message.js'));
+    plugin(path.join(__dirname, 'fixtures/message.js'));
 
-    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/file-with-message.js.pot'), { encoding: 'utf8' });
+    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message.js.pot'), { encoding: 'utf8' });
+
+    expect(potFileContent.toString()).toMatchSnapshot();
+  });
+
+  it('extract a message call with plural form', () => {
+    plugin(path.join(__dirname, 'fixtures/message-with-plural.js'));
+
+    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message-with-plural.js.pot'), { encoding: 'utf8' });
+
+    expect(potFileContent.toString()).toMatchSnapshot();
+  });
+
+  it('merge a message with singular and plural forms', () => {
+    plugin(path.join(__dirname, 'fixtures/message-with-singular-and-plural.js'));
+
+    const potFileContent = fs.readFileSync(path.join(__dirname, 'gettext/resources/test/fixtures/message-with-singular-and-plural.js.pot'), { encoding: 'utf8' });
 
     expect(potFileContent.toString()).toMatchSnapshot();
   });
