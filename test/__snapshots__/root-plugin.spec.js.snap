@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pomes Extract Plugin extract a message call 1`] = `
+exports[`Pomes Extract Plugin #message extract a message call 1`] = `
 "msgid \\"\\"
 msgstr \\"\\"
 \\"Content-Type: text/plain; charset=utf-8\\\\n\\"
@@ -14,7 +14,7 @@ msgid \\"foo\\"
 msgstr \\"\\""
 `;
 
-exports[`Pomes Extract Plugin extract a message call with plural form 1`] = `
+exports[`Pomes Extract Plugin #message extract a message call with plural form 1`] = `
 "msgid \\"\\"
 msgstr \\"\\"
 \\"Content-Type: text/plain; charset=utf-8\\\\n\\"
@@ -30,7 +30,7 @@ msgstr[0] \\"\\"
 msgstr[1] \\"\\""
 `;
 
-exports[`Pomes Extract Plugin merge a message with singular and plural forms 1`] = `
+exports[`Pomes Extract Plugin #message merge a message with singular and plural forms 1`] = `
 "msgid \\"\\"
 msgstr \\"\\"
 \\"Content-Type: text/plain; charset=utf-8\\\\n\\"
@@ -46,4 +46,43 @@ msgid \\"foo message\\"
 msgid_plural \\"foo message plural\\"
 msgstr[0] \\"\\"
 msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message raise warning for message without comment 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-without-comment.js:3
+msgid \\"foo\\"
+msgstr \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message raise warning for message without comment 2`] = `
+Array [
+  Array [
+    "[pomes-extract][33m[MISSING COMMENT][msgid:][0m [43m[30m\\"foo\\"[0m",
+  ],
+  Array [
+    "/Users/gustavobastos/Projects/babel-plugin-pomes-extract/test/fixtures/message-without-comment.js:3:1
+",
+  ],
+]
+`;
+
+exports[`Pomes Extract Plugin <Message /> extract a Message component 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component.js:1
+#. bar
+msgid \\"foo\\"
+msgstr \\"\\""
 `;
