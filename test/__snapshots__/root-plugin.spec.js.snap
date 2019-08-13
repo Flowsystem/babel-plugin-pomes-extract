@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pomes Extract Plugin extract a message call 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/file-with-message.js:3
+#. bar
+msgid \\"foo\\"
+msgstr \\"\\""
+`;

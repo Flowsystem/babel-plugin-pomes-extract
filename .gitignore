@@ -8,3 +8,4 @@ npm-debug.log
 lerna-debug.log
 coverage
 .DS_Store
+test/**/*.pot

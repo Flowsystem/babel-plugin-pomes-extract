@@ -100,8 +100,6 @@ function buildReference(entry, state, line = 0) {
   const { includeReference = true, baseReferenceDir } = state.opts;
   if (entry && includeReference) {
     let reference;
-    console.log(process.cwd());
-    console.log(state.file.opts.filename);
     const rawFilename = p.relative(process.cwd(), state.file.opts.filename);
     const baseReferenceDirRaw = baseReferenceDir;
     if (baseReferenceDirRaw) {
