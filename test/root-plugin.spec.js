@@ -50,6 +50,14 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
     });
 
+    it('split messages with context', () => {
+      plugin('message-with-singular-plural-and-context.js');
+
+      const potFileContent = readPotFile('message-with-singular-plural-and-context.js.pot');
+
+      expect(potFileContent.toString()).toMatchSnapshot();
+    });
+
     it('raise warning for message without comment', () => {
       plugin('message-without-comment.js');
 
@@ -82,6 +90,14 @@ describe('Pomes Extract Plugin', () => {
       plugin('message-component-with-singular-and-plural.js');
 
       const potFileContent = readPotFile('message-component-with-singular-and-plural.js.pot');
+
+      expect(potFileContent.toString()).toMatchSnapshot();
+    });
+
+    it('split Messages with context', () => {
+      plugin('message-component-with-singular-plural-and-context.js');
+
+      const potFileContent = readPotFile('message-component-with-singular-plural-and-context.js.pot');
 
       expect(potFileContent.toString()).toMatchSnapshot();
     });
