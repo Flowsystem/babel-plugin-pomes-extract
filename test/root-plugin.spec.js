@@ -70,5 +70,21 @@ describe('Pomes Extract Plugin', () => {
 
       expect(potFileContent.toString()).toMatchSnapshot();
     });
+
+    it('extract a message call with plural form', () => {
+      plugin('message-component-with-plural.js');
+
+      const potFileContent = readPotFile('message-component-with-plural.js.pot');
+
+      expect(potFileContent.toString()).toMatchSnapshot();
+    });
+
+    it('merge a message with singular and plural forms', () => {
+      plugin('message-component-with-singular-and-plural.js');
+
+      const potFileContent = readPotFile('message-component-with-singular-and-plural.js.pot');
+
+      expect(potFileContent.toString()).toMatchSnapshot();
+    });
   });
 });

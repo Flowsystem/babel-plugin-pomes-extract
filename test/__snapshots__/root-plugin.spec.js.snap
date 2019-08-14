@@ -86,3 +86,37 @@ msgstr \\"\\"
 msgid \\"foo\\"
 msgstr \\"\\""
 `;
+
+exports[`Pomes Extract Plugin <Message /> extract a message call with plural form 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-with-plural.js:1
+#. bar
+msgid \\"foo\\"
+msgid_plural \\"foo {n}\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> merge a message with singular and plural forms 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-with-singular-and-plural.js:2
+#: test/fixtures/message-component-with-singular-and-plural.js:7
+#. bar comment (singular)
+#. bar comment (plural)
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
