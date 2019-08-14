@@ -9,3 +9,9 @@ message({
   id: 'c' + 'o' + 'n' + 'c' + 'atenate',
   comment: 'bar',
 });
+
+message({
+  id: 'bar',
+  comment: 'foo',
+  future: true,
+});

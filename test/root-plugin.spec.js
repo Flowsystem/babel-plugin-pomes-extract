@@ -67,6 +67,14 @@ describe('Pomes Extract Plugin', () => {
       expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
       expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-without-comment.js:3:1\n');
     });
+
+    it('skip creating pot files for messages with future', () => {
+      plugin('message-future.js');
+
+      const filePath = path.join(__dirname, 'gettext/resources/test/fixtures/message-future.js.pot');
+
+      expect(fs.existsSync(filePath)).toBe(false);
+    });
   });
 
   describe('<Message />', () => {
@@ -110,6 +118,14 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
       expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
       expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-component-without-comment.js:1:1\n');
+    });
+
+    it('skip creating pot files for Message with future', () => {
+      plugin('message-component-future.js');
+
+      const filePath = path.join(__dirname, 'gettext/resources/test/fixtures/message-component-future.js.pot');
+
+      expect(fs.existsSync(filePath)).toBe(false);
     });
   });
 });
