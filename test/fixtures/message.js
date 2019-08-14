@@ -4,3 +4,8 @@ message({
   id: 'foo',
   comment: 'bar',
 });
+
+message({
+  id: 'c' + 'o' + 'n' + 'c' + 'atenate',
+  comment: 'bar',
+});

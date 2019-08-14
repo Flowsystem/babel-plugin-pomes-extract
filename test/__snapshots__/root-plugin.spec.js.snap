@@ -11,6 +11,11 @@ msgstr \\"\\"
 #: test/fixtures/message.js:3
 #. bar
 msgid \\"foo\\"
+msgstr \\"\\"
+
+#: test/fixtures/message.js:8
+#. bar
+msgid \\"concatenate\\"
 msgstr \\"\\""
 `;
 
