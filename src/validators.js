@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 const get = require('lodash/get');
+const p = require('path');
+const logger = require('logtown')('pomes-extract');
 const constants = require('./constants');
 const { getComponentName, getSingularAttribute } = require('./options');
 
@@ -22,8 +24,8 @@ function buildSyntaxError(node, filename, msg) {
 }
 
 function buildWarning(node, filename, messageId) {
-  console.log(`[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"${messageId}"\x1b[0m`);
-  console.log(`${filename}:${node.loc.start.line}:${node.loc.start.column + 1}\n`);
+  logger.warn(`[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"${messageId}"\x1b[0m`);
+  logger.warn(`${filename}:${node.loc.start.line}:${node.loc.start.column + 1}\n`);
 }
 
 module.exports = {
@@ -51,7 +53,9 @@ module.exports = {
     const messageComment = entry.extracted;
 
     if (!messageComment) {
-      buildWarning(path.node, opts.filename, messageId);
+      const filePath = p.join(p.basename(opts.cwd), p.relative(opts.cwd, opts.filename));
+
+      buildWarning(path.node, filePath, messageId);
     }
   },
 };

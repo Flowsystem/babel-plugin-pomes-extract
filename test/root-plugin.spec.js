@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const babel = require('@babel/core');
 
+const { logger } = require('./support/logger');
+
 const plugin = (filename) => babel.transformFileSync(path.join(__dirname, 'fixtures', filename), {
   presets: [
     '@babel/preset-react',
@@ -48,17 +50,14 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
     });
 
-    xit('raise warning for message without comment', () => {
-      const oldLog = console.log;
-      console.log = jest.fn();
+    it('raise warning for message without comment', () => {
       plugin('message-without-comment.js');
 
       const potFileContent = readPotFile('message-without-comment.js.pot');
 
       expect(potFileContent.toString()).toMatchSnapshot();
-
-      expect(console.log.mock.calls).toMatchSnapshot();
-      console.log = oldLog;
+      expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
+      expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-without-comment.js:3:1\n');
     });
   });
 
@@ -71,7 +70,7 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
     });
 
-    it('extract a message call with plural form', () => {
+    it('extract a Message component with plural form', () => {
       plugin('message-component-with-plural.js');
 
       const potFileContent = readPotFile('message-component-with-plural.js.pot');
@@ -79,12 +78,22 @@ describe('Pomes Extract Plugin', () => {
       expect(potFileContent.toString()).toMatchSnapshot();
     });
 
-    it('merge a message with singular and plural forms', () => {
+    it('merge a Message component with singular and plural forms', () => {
       plugin('message-component-with-singular-and-plural.js');
 
       const potFileContent = readPotFile('message-component-with-singular-and-plural.js.pot');
 
       expect(potFileContent.toString()).toMatchSnapshot();
+    });
+
+    it('raise warning for Message component without comment', () => {
+      plugin('message-component-without-comment.js');
+
+      const potFileContent = readPotFile('message-component-without-comment.js.pot');
+
+      expect(potFileContent.toString()).toMatchSnapshot();
+      expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
+      expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-component-without-comment.js:1:1\n');
     });
   });
 });

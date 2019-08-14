@@ -49,6 +49,7 @@
     "jest": "^24.8.0"
   },
   "peerDependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "logtown": "^2.4.5"
   }
 }
