@@ -127,5 +127,17 @@ describe('Pomes Extract Plugin', () => {
 
       expect(fs.existsSync(filePath)).toBe(false);
     });
+
+    it('raise exception if using this.props.message (instead of destructuring props)', () => {
+      expect(() => {
+        plugin('message-component-with-props.js');
+      }).toThrowError();
+    });
+
+    it('raise exception if Message does not have an id', () => {
+      expect(() => {
+        plugin('message-component-without-id.js');
+      }).toThrowError();
+    });
   });
 });

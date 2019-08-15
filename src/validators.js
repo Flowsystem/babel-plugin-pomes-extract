@@ -9,6 +9,7 @@ function checkIfArgsHasMessageObject(args) {
   if (args.length !== 1) {
     return false;
   }
+
   const msgObject = args[0];
   const msgidProp = msgObject.properties.find((prop) => prop.key.name === 'id');
 
@@ -30,7 +31,7 @@ function buildWarning(node, filename, messageId) {
 
 module.exports = {
   validateComponentEntry(entry, types, path, state) {
-    if (!entry.msgid) {
+    if (!entry[constants.MSG_ID]) {
       throw path.buildCodeFrameError(
         `${getComponentName(state)} component must have a prop '${getSingularAttribute(state)}'!`,
       );
@@ -42,7 +43,7 @@ module.exports = {
     const calleeObject = get(callee, 'object');
 
     if (get(callee, 'property.name') === 'message' && get(calleeObject, 'object.type') === 'ThisExpression'
-      && get(calleeObject, 'property.name') === 'props' && get(calleeObject, 'property.name') === 'context'
+      && (get(calleeObject, 'property.name') === 'props' || get(calleeObject, 'property.name') === 'context')
       && checkIfArgsHasMessageObject(path.node.arguments)) {
       throw buildSyntaxError(path.node, opts.filename, 'To use the Pomes Translation Api you should deconstruct the "message" function from the "this.props" or "this.context" and use it separately like message({ id: \'Message ID\' })');
     }
