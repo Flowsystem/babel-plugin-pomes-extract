@@ -25,7 +25,7 @@ function buildSyntaxError(node, filename, msg) {
 }
 
 function buildWarning(node, filename, messageId) {
-  logger.warn(`[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"${messageId}"\x1b[0m`);
+  logger.warn(`\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"${messageId}"\x1b[0m`);
   logger.warn(`${filename}:${node.loc.start.line}:${node.loc.start.column + 1}\n`);
 }
 

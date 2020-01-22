@@ -64,7 +64,7 @@ describe('Pomes Extract Plugin', () => {
       const potFileContent = readPotFile('message-without-comment.js.pot');
 
       expect(potFileContent.toString()).toMatchSnapshot();
-      expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
+      expect(logger).toHaveBeenNthCalledWith(1, '\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
       expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-without-comment.js:3:1\n');
     });
 
@@ -116,7 +116,7 @@ describe('Pomes Extract Plugin', () => {
       const potFileContent = readPotFile('message-component-without-comment.js.pot');
 
       expect(potFileContent.toString()).toMatchSnapshot();
-      expect(logger).toHaveBeenNthCalledWith(1, '[pomes-extract]\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
+      expect(logger).toHaveBeenNthCalledWith(1, '\x1b[33m[MISSING COMMENT][msgid:]\x1b[0m \x1b[43m\x1b[30m"foo"\x1b[0m');
       expect(logger).toHaveBeenNthCalledWith(2, 'babel-plugin-pomes-extract/test/fixtures/message-component-without-comment.js:1:1\n');
     });
 
