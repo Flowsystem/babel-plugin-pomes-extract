@@ -1,4 +1,3 @@
-/* eslint-disable camelcase,no-shadow */
 const { saveEntries } = require('./src/utils');
 const { buildCallExpressionEntry, buildJSXElementEntry } = require('./src/builders');
 

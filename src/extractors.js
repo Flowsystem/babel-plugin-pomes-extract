@@ -22,16 +22,16 @@ function extractFuncArg(arg, argIndex, funcName, types, path) {
 function extractMessageObjectProps(args, options) {
   const msgObject = args[0];
   return {
-    messageId: msgObject.properties.find(prop => prop.key.name === options.singular),
-    messagePluralId: msgObject.properties.find(prop => prop.key.name === options.plural),
-    messageContext: msgObject.properties.find(prop => prop.key.name === options.context),
-    messageComment: msgObject.properties.find(prop => prop.key.name === options.comment),
+    messageId: msgObject.properties.find((prop) => prop.key.name === options.singular),
+    messagePluralId: msgObject.properties.find((prop) => prop.key.name === options.plural),
+    messageContext: msgObject.properties.find((prop) => prop.key.name === options.context),
+    messageComment: msgObject.properties.find((prop) => prop.key.name === options.comment),
   };
 }
 
 function extractFutureAttribute(args, options) {
   const msgObject = args[0];
-  const futureProp = msgObject.properties.find(prop => prop.key.name === options.future);
+  const futureProp = msgObject.properties.find((prop) => prop.key.name === options.future);
   if (futureProp) {
     return futureProp.value.value;
   }

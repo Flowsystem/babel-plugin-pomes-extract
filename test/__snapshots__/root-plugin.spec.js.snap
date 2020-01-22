@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pomes Extract Plugin #message extract a message call 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message.js:3
+#. bar
+msgid \\"foo\\"
+msgstr \\"\\"
+
+#: test/fixtures/message.js:8
+#. bar
+msgid \\"concatenate\\"
+msgstr \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message extract a message call with plural form 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-with-plural.js:4
+#. bar comment
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message merge a message with singular and plural forms 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-with-singular-and-plural.js:4
+#: test/fixtures/message-with-singular-and-plural.js:10
+#. bar comment (singular)
+#. bar comment (plural)
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message raise warning for message without comment 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-without-comment.js:3
+msgid \\"foo\\"
+msgstr \\"\\""
+`;
+
+exports[`Pomes Extract Plugin #message split messages with context 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-with-singular-plural-and-context.js:4
+#. bar comment (singular)
+msgid \\"foo message\\"
+msgstr \\"\\"
+
+#: test/fixtures/message-with-singular-plural-and-context.js:9
+#. bar comment (singular)
+msgctxt \\"singular context\\"
+msgid \\"foo message\\"
+msgstr \\"\\"
+
+#: test/fixtures/message-with-singular-plural-and-context.js:15
+#. bar comment (plural)
+msgctxt \\"plural context\\"
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> extract a Message component 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component.js:7
+#. bar
+msgid \\"foo\\"
+msgstr \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> extract a Message component with plural form 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-with-plural.js:1
+#. bar
+msgid \\"foo\\"
+msgid_plural \\"foo {n}\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> merge a Message component with singular and plural forms 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-with-singular-and-plural.js:2
+#: test/fixtures/message-component-with-singular-and-plural.js:7
+#. bar comment (singular)
+#. bar comment (plural)
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> raise warning for Message component without comment 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-without-comment.js:1
+msgid \\"foo\\"
+msgstr \\"\\""
+`;
+
+exports[`Pomes Extract Plugin <Message /> split Messages with context 1`] = `
+"msgid \\"\\"
+msgstr \\"\\"
+\\"Content-Type: text/plain; charset=utf-8\\\\n\\"
+\\"Plural-Forms: nplurals=2; plural=(n!=1);\\\\n\\"
+\\"Language: en_US\\\\n\\"
+\\"PO-Revision-Date: 2019-08-13T07:45:01.119Z\\\\n\\"
+
+#: test/fixtures/message-component-with-singular-plural-and-context.js:2
+#. bar comment (singular)
+msgid \\"foo message\\"
+msgstr \\"\\"
+
+#: test/fixtures/message-component-with-singular-plural-and-context.js:6
+#. bar comment (singular)
+msgctxt \\"singular context\\"
+msgid \\"foo message\\"
+msgstr \\"\\"
+
+#: test/fixtures/message-component-with-singular-plural-and-context.js:11
+#. bar comment (plural)
+msgctxt \\"plural context\\"
+msgid \\"foo message\\"
+msgid_plural \\"foo message plural\\"
+msgstr[0] \\"\\"
+msgstr[1] \\"\\""
+`;
